@@ -30,7 +30,7 @@ export default function SimpleTable() {
     async function sampleFunc() {
       let response = await fetch("/api/employees");
       let body = await response.json();
-      upDateData(body);
+      upDateData(body.content);
     }
     console.log("DATA: ", data);
     console.log("data.lengt: ", data.length);
@@ -41,8 +41,8 @@ export default function SimpleTable() {
       setLoad(false);
     }
   
-    if (data?._embedded) isLoading = false;
-  
+    if (data.length === 0) {isLoading = true} else {isLoading = false};
+
     return (
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -69,8 +69,8 @@ export default function SimpleTable() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {data?._embedded.employees.map(row => (
-                  <TableRow key={row.name}>
+                {data?.map((row, index) => (
+                  <TableRow key={index}>
                     <TableCell align="center">{row.firstName}</TableCell>
                     <TableCell align="center">{row.lastName}</TableCell>
                   </TableRow>
