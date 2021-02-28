@@ -54,7 +54,7 @@ export default function Dashboard() {
             <Grid container spacing={3}>
                 <Grid item xs={12} md={8} lg={9}>
                     <Paper className={fixedHeightPaper}>
-                        <Issues />
+                        <div>TODO: Show statistics, how many issues, how many PRs etc</div>
                     </Paper>
                 </Grid>
             </Grid>
