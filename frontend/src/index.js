@@ -6,26 +6,24 @@ import {
   ThemeProvider as MuiThemeProvider,
 } from '@material-ui/core/styles';
 import { BrowserRouter as Router } from 'react-router-dom';
+import Layout from './components/Layout';
 
 import GlobalStyles from './GlobalStyles';
 import theme from './theme';
 import Routes from './routes';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <StylesProvider injectFirst>
-      <MuiThemeProvider theme={theme}>
-        <GlobalStyles />
-        <Router>
+  <StylesProvider injectFirst>
+    <MuiThemeProvider theme={theme}>
+      <GlobalStyles />
+      <Router>
+        <Layout>
           <Routes />
-        </Router>
-      </MuiThemeProvider>
-    </StylesProvider>
-  </React.StrictMode>,
+        </Layout>
+      </Router>
+    </MuiThemeProvider>
+  </StylesProvider >,
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

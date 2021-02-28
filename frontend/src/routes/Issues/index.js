@@ -1,4 +1,4 @@
-import { Avatar, CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@material-ui/core";
+import { Avatar, Box, CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@material-ui/core";
 import React from "react";
 import { Call } from "@material-ui/icons";
 import { Link } from "react-router-dom";
@@ -46,46 +46,48 @@ export default function Issues() {
     };
 
     return (
-        <div className={classes.paper}>
-            <Avatar className={classes.avatar}>
-                <Call />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-                Employee Directory
+        <Box mb={2} display="flex" alignItems="flex-end">
+            <div className={classes.paper}>
+                <Avatar className={classes.avatar}>
+                    <Call />
+                </Avatar>
+                <Typography component="h1" variant="h5">
+                    Employee Directory
         </Typography>
 
-            {isLoading ? (
-                <CircularProgress />
-            ) : (
-                    <TableContainer
-                        style={{ width: "80%", margin: "0 10px" }}
-                        component={Paper}
-                    >
-                        <Table className={classes.table} aria-label="simple table">
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell align="center">Firstname</TableCell>
-                                    <TableCell align="center">Lastname</TableCell>
-                                    <TableCell align="center">Description</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {data?.map((row, index) => (
-                                    <TableRow key={index}>
-                                        <TableCell align="center">{row.firstName}</TableCell>
-                                        <TableCell align="center">{row.lastName}</TableCell>
-                                        <TableCell align="center">{row.description}</TableCell>
+                {isLoading ? (
+                    <CircularProgress />
+                ) : (
+                        <TableContainer
+                            style={{ width: "80%", margin: "0 10px" }}
+                            component={Paper}
+                        >
+                            <Table className={classes.table} aria-label="simple table">
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell align="center">Firstname</TableCell>
+                                        <TableCell align="center">Lastname</TableCell>
+                                        <TableCell align="center">Description</TableCell>
                                     </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
-                )}
-            <Link className={classes.link} to="/">
-                <Typography align="left">
-                    &#x2190; Head back to save data
+                                </TableHead>
+                                <TableBody>
+                                    {data?.map((row, index) => (
+                                        <TableRow key={index}>
+                                            <TableCell align="center">{row.firstName}</TableCell>
+                                            <TableCell align="center">{row.lastName}</TableCell>
+                                            <TableCell align="center">{row.description}</TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+                    )}
+                <Link className={classes.link} to="/">
+                    <Typography align="left">
+                        &#x2190; Head back to save data
           </Typography>
-            </Link>
-        </div>
+                </Link>
+            </div>
+        </Box>
     );
 }

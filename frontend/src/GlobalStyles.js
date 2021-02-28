@@ -1,5 +1,6 @@
 import { CssBaseline } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import React from 'react';
 
 const CssOverrides = withStyles({
   // @global is handled by jss-plugin-global.
